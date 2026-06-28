@@ -17,7 +17,7 @@
             <label>Edad:</label>
             <input type="number" name="age" required>
         </div>
-        <button type="submit" class="btn">Guardar Mascota</button>
+        <button type="submit" class="btn"><i class="fa-solid fa-floppy-disk"></i> Guardar Mascota</button>
         <a href="{{ route('pets.index') }}" class="btn btn-secondary">Volver</a>
     </form>
 </div>
