@@ -1,19 +1,18 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Lista de Mascotas</title>
-</head>
-<body>
-    <h1>Directorio de Mascotas</h1>
+@extends('layouts.app')
+@section('title', 'Listado de Mascotas')
+@section('content')
+<div class="card">
+    <h2>Directorio de Mascotas</h2>
 
     @if(session('success'))
-        <div style="color: green;">{{ session('success') }}</div>
+        <div class="alert-success">{{ session('success') }}</div>
     @endif
 
-    <a href="{{ route('pets.create') }}">Registrar Nueva Mascota</a><br><br>
+    <div class="actions">
+        <a href="{{ route('pets.create') }}" class="btn">Registrar Nueva Mascota</a>
+    </div>
 
-    <table border="1" cellpadding="10">
+    <table class="table">
         <thead>
             <tr>
                 <th>ID</th>
@@ -37,5 +36,5 @@
     <div style="margin-top: 20px;">
         {{ $pets->links() }}
     </div>
-</body>
-</html>
+</div>
+@endsection
