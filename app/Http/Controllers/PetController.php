@@ -7,11 +7,18 @@ use Illuminate\Http\Request;
 
 class PetController extends Controller
 {
-    public function index()
-    {
-        $pets = Pet::latest()->paginate(5);
-        return view('pets.index', compact('pets'));
+   public function index(Request $request)
+{
+    $query = Pet::query();
+
+    if ($request->has('buscar')) {
+        $query->where('species', 'LIKE', '%' . $request->buscar . '%');
     }
+
+    $pets = $query->latest()->paginate(5)->appends($request->query());
+
+    return view('pets.index', compact('pets'));
+}
 
     public function create()
     {
