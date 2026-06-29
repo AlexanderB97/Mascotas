@@ -11,11 +11,11 @@ class PetController extends Controller
 {
     $query = Pet::query();
 
-    if ($request->has('buscar')) {
+    if ($request->filled('buscar')) {
         $query->where('species', 'LIKE', '%' . $request->buscar . '%');
     }
 
-    $pets = $query->latest()->paginate(5)->appends($request->query());
+    $pets = $query->orderBy('id', 'asc')->paginate(5)->appends($request->query());
 
     return view('pets.index', compact('pets'));
 }
